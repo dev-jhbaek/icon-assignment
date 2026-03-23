@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>N2 예문 복습</title> <!-- ### 1/5 ### -->
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="apple-touch-icon" href="https://i.imgur.com/jURBm1i.png"> <!-- ### 2/5 ### -->
+  <link rel="icon" href="https://i.imgur.com/jURBm1i.png"> <!-- ### 3/5 ### -->
+
+  <style>
+    /* 기본 레이아웃 */
+    body, html { 
+      margin: 0; padding: 0; height: 100%; width: 100%; 
+      overflow: hidden; background-color: #f4f7f9; 
+    }
+    
+    /* 구글 앱스 스크립트가 담길 창문 */
+    iframe { 
+      position: absolute; top: 0; left: 0; 
+      width: 100%; height: 100%; border: none; z-index: 1; 
+    }
+
+    /* 로딩 화면 레이어 (아이콘 중앙 배치) */
+    #loader {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-color: #f4f7f9;
+      display: flex; 
+      align-items: center; justify-content: center; /* 완전 중앙 */
+      z-index: 9999; 
+      transition: opacity 0.5s ease;
+    }
+
+    /* 아이콘 이미지 애니메이션 (크기 키움) */
+    .loading-icon {
+      width: 110px; /* 아이콘을 조금 더 키워서 강조 */
+      height: 110px;
+      border-radius: 25px;
+      /* 구글 파란색 은은한 그림자 유지 */
+      box-shadow: 0 10px 30px rgba(66, 133, 244, 0.25);
+      animation: pulse 1.6s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.08); opacity: 1; } /* 커지는 정도 증가 */
+      100% { transform: scale(1); opacity: 0.9; }
+    }
+
+    /* 로딩 텍스트 스타일 삭제됨 */
+  </style>
+</head>
+<body>
+
+  <div id="loader">
+    <img src="https://i.imgur.com/jURBm1i.png" class="loading-icon" alt="App Icon"> <!-- ### 4/5 ### -->
+  </div>
+
+  <iframe 
+    src="https://script.google.com/macros/s/AKfycbwMT-fqlQZYjvG9_02eAgpZBFNm4ga3ftcysNs_ITX2MhQHsulGTUreUUx_xly56kc3/exec"
+    onload="hideLoader()"> <!-- ### 5/5 ### -->
+  </iframe>
+
+  <script>
+    // iframe 로드가 완료되면 실행되는 함수
+    function hideLoader() {
+      const loader = document.getElementById('loader');
+      loader.style.opacity = '0'; // 부드럽게 투명해짐
+      setTimeout(() => {
+        loader.style.display = 'none'; // 완전히 제거
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
